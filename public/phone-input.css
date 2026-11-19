@@ -1,0 +1,31 @@
+.phone-group { display: flex; gap: 8px; }
+.phone-group input { flex: 1; min-width: 0; color: #fff; }
+
+.country-picker { position: relative; flex: 0 0 120px; }
+.cp-btn {
+  width: 100%; height: 100%; display: flex; align-items: center; gap: 8px;
+  padding: 0 10px; background: var(--navy-900); color: #fff;
+  border: 1px solid var(--navy-700); border-radius: 9px; cursor: pointer;
+  font: inherit;
+}
+.cp-caret { margin-left: auto; opacity: .6; font-size: 12px; }
+.cp-flag { width: 20px; height: 15px; object-fit: cover; border-radius: 2px; flex: none; }
+
+.cp-panel {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 100;
+  width: min(300px, 80vw); background: var(--navy-800);
+  border: 1px solid var(--navy-600); border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.5); overflow: hidden;
+}
+.cp-panel[hidden] { display: none; }
+.cp-search {
+  width: 100%; padding: 10px 12px; background: var(--navy-900); color: #fff;
+  border: 0; border-bottom: 1px solid var(--line); outline: none; font: inherit;
+}
+.cp-list { max-height: 260px; overflow-y: auto; list-style: none; margin: 0; padding: 4px 0; }
+.cp-list li {
+  display: flex; align-items: center; gap: 10px; padding: 8px 12px; cursor: pointer;
+}
+.cp-list li:hover { background: var(--navy-700); }
+.cp-name { flex: 1; font-size: 14px; }
+.cp-dial { color: var(--text-mid); font-size: 13px; font-family: var(--font-mono); }
