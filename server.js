@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -6,6 +7,18 @@ const nodemailer = require('nodemailer');
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+// /privacy.html -> /privacy (301)
+app.use((req, res, next) => {
+  if (!req.path.endsWith('.html')) return next();
+  const name = req.path.slice(1, -5);
+  res.redirect(301, name === 'index' ? '/' : '/' + name);
+});
+
+// /privacy -> privacy.html
+app.use(express.static(PUBLIC_DIR, { extensions: ['html'] }));
 
 // ---- ZeptoMail SMTP transport ----
 // Fill these in your .env file (see .env.example)
